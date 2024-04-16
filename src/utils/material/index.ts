@@ -1,25 +1,50 @@
-import DaoList from "@/data/shared/strange.json";
+import MaterialAfterList from "@/data/material/after.json";
+import NameList from "@/data/organism/name.json";
+import OrganismAfterList from "@/data/organism/after.json";
 import { MaterialParamsType, ReturnMaterialType } from "@/type/material";
+import { getFixedList, getRandomDynamicList, getRandomList } from "../tool";
 
+/**
+ * 获取材料
+ * @param option
+ * @returns
+ */
 export const getMaterial = (
   option: MaterialParamsType
 ): ReturnMaterialType[] => {
-  const { num, nameLength } = option;
-  //   初始化数据
+  const { num, afterWord, wordLength, isOrganism } = option;
+  // 初始化数据
   const defaultNum = num ? num : 10;
-  const defaultNameLength = nameLength ? nameLength : 0;
+  const defaultWordLength = wordLength ? wordLength : 0;
+  const defaultIsOrganism = !!isOrganism;
 
-  console.log(DaoList);
-  const list: any = [];
-  DaoList.map((item, index) => {
-    const data = {
-      id: index + 146,
-      name: item,
-      class: "",
-    };
-    list.push(data);
-  });
-  console.log(JSON.stringify(list));
-  console.log(defaultNameLength, defaultNum);
-  return [];
+  const organismList = defaultIsOrganism
+    ? getRandomList(defaultNum, OrganismAfterList)
+    : getFixedList(defaultNum, "");
+
+  const afterWordList = afterWord
+    ? getFixedList(defaultNum, afterWord)
+    : getRandomList(defaultNum, MaterialAfterList);
+
+  const returnList: ReturnMaterialType[] = [];
+
+  const nameList = getRandomDynamicList(
+    defaultNum,
+    NameList,
+    defaultWordLength
+  );
+  for (let i = 0; i < defaultNum; i++) {
+    const { name: afterWord } = afterWordList[i];
+    const { name } = nameList[i];
+    const { name: organismName } = organismList[i];
+    returnList.push({
+      id: i + 1,
+      name,
+      afterWord,
+      organismName,
+      fullName: `${name}${organismName}${afterWord}`,
+    });
+  }
+
+  return returnList;
 };

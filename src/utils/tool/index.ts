@@ -1,6 +1,6 @@
 import { GenderEnum } from "@/enum";
-import { GenderInfoType } from "@/type";
-import { RandomNameType } from "@/type";
+import { GenderInfoType, RandomNameType } from "@/type";
+import PublicNameList from "@/data/public/name.json";
 
 // 获取随机姓数组
 export function getRandomList(
@@ -76,35 +76,55 @@ export function uniqueByName(arr: any[], name: string): any {
   return newArr;
 }
 
-// const loopObjList = [];
-
-// 获取随机功法数组
-export function getRandomGongFaList(
+// 获取随机数组
+export function getRandomDynamicList(
   num: number,
   list: RandomNameType[],
-  wordLength: number = 1
+  wordLength: number = 1,
+  probability: number = 0
 ): RandomNameType[] {
   const returnList: RandomNameType[] = [];
+
+  // 计算概率
+  let defaultProbability = [
+    { key: 1, probability: 0.33 },
+    { key: 2, probability: 0.66 },
+    { key: 3, probability: 0.99 },
+  ];
+  if (probability > 0) {
+    defaultProbability = [];
+    for (let index = 0; index < probability; index++) {
+      defaultProbability.push({
+        key: index + 1,
+        probability: +((index + 1) / probability).toFixed(2),
+      }); 
+    }
+  }
+
   for (let i = 0; i < num; i++) {
     let name = "";
     let loopNum = !wordLength ? 0 : wordLength;
     // 当不固定字数时  随机返回1~2字数`
     if (loopNum === 0) {
       const randomValue = Math.random();
-      if (randomValue < 0.3) {
-        loopNum = 1;
-      } else if (randomValue < 0.6) {
-        loopNum = 2;
-      } else if (randomValue < 1) {
-        loopNum = 3;
-      }
+      // 通过概率赋值name长度
+      defaultProbability.forEach((item) => {
+        if (randomValue <= item.probability) {
+          loopNum = item.key;
+        }
+      });
     }
     // 随机 loopNum 个名字并连
     const oList = JSON.parse(JSON.stringify(list));
     for (let j = 0; j < loopNum; j++) {
-      const randomIndex = Math.floor(Math.random() * oList.length);
-      name += list[randomIndex].name;
-      oList.filter((item: any) => item.class === oList[randomIndex].class);
+      if (loopNum > 2 && j === 0) {
+        const randomIndex = Math.floor(Math.random() * PublicNameList.length);
+        name += PublicNameList[randomIndex].name;
+      } else {
+        const randomIndex = Math.floor(Math.random() * oList.length);
+        name += list[randomIndex].name;
+        oList.filter((item: any) => item.class === oList[randomIndex].class);
+      }
     }
     returnList.push({
       id: i + 1,

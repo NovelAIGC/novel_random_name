@@ -1,6 +1,6 @@
 import AfterList from "@/data/organism/after.json";
 import NameList from "@/data/organism/name.json";
-import ColorList from "@/data/organism/color.json";
+import ColorList from "@/data/public/color.json";
 import { OrganismParamsType, ReturnOrganismType } from "@/type/organism";
 import { getFixedList, getRandomList } from "../tool";
 

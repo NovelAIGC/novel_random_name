@@ -101,7 +101,5 @@
   { "id": 100, "name": "蝇", "class": "insect" },
   { "id": 101, "name": "蚊", "class": "insect" },
   { "id": 102, "name": "蝉", "class": "insect" },
-  { "id": 103, "name": "独角兽", "class": "myth" },
-  { "id": 103, "name": "独角兽", "class": "myth" },
-  { "id": 104, "name": "半人马", "class": "myth" }
+  { "id": 103, "name": "独角兽", "class": "myth" }
 ]
