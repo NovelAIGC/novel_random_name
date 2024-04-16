@@ -1,0 +1,15 @@
+[
+  { "id": 1, "name": "子", "class": "uncommon" },
+  { "id": 2, "name": "道姑", "class": "uncommon" },
+  { "id": 3, "name": "真人", "class": "care" },
+  { "id": 4, "name": "法师", "class": "care" },
+  { "id": 5, "name": "公主", "class": "epic" },
+  { "id": 6, "name": "洞主", "class": "epic" },
+  { "id": 7, "name": "教母", "class": "legendary" },
+  { "id": 8, "name": "圣女", "class": "legendary" },
+  { "id": 9, "name": "仙", "class": "mythic" },
+  { "id": 10, "name": "仙子", "class": "mythic" },
+  { "id": 11, "name": "仙女", "class": "mythic" },
+  { "id": 12, "name": "圣母", "class": "mythic" },
+  { "id": 13, "name": "娘娘", "class": "exotic" }
+]
