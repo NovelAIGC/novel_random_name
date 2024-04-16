@@ -16,3 +16,15 @@ export enum DaoClassEnum {
   MYTHIC ="mythic",
   EXOTIC ="exotic", 
 }
+
+export enum GongFaClassEnum {
+  ACTION = "action",
+  DAO ="dao",
+  ELEMENT ="element",
+  CREATURE ="creature",
+  THING ="thing", 
+  PLACE ="place", 
+  OBJ ="obj", 
+  NUMBER ="number", 
+  GESTURE ="gesture", 
+}

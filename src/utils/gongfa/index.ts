@@ -1,25 +1,33 @@
-import { GenderEnum } from "@/enum";
-import { DaoParamsType, ReturnDaoType } from "@/type/dao";
-import DaoList from "@/data/gongfa/action.json";
+import GongFaNameList from "@/data/gongfa/name.json";
+import GongFaClassList from "@/data/gongfa/class.json";
+import { GongfaParamsType, ReturnGongfaType } from "@/type/gongfa";
+import { getFixedList, getRandomGongFaList, getRandomList } from "../tool";
 
-export const getGongfa = (option: DaoParamsType): ReturnDaoType[] => {
-  const { num, gender, nameLength } = option;
+export const getGongfa = (option: GongfaParamsType): ReturnGongfaType[] => {
+  const { num, nameLength, afterWord } = option;
   //   初始化数据
   const defaultNum = num ? num : 10;
-  const defaultGender = gender ? gender : GenderEnum.ALL;
-  const defaultNameLength = nameLength ? nameLength : 0;
-
-  console.log(DaoList);
-  const list: any = [];
-  DaoList.map((item, index) => {
-    const data = {
+  let defaultNameLength = nameLength ? nameLength : 0;
+  if (defaultNameLength > 3) defaultNameLength = 3; // 最大值不能超过三
+  const afterWordList = afterWord
+    ? getFixedList(defaultNum, afterWord)
+    : getRandomList(defaultNum, GongFaClassList);
+  const nameList = getRandomGongFaList(
+    defaultNum,
+    GongFaNameList,
+    defaultNameLength
+  );
+  const returnList: ReturnGongfaType[] = [];
+  for (let index = 0; index < defaultNum; index++) {
+    const { name: afterWord } = afterWordList[index];
+    const { name } = nameList[index];
+    const data: ReturnGongfaType = {
       id: index + 1,
-      name: item,
-      class: "",
+      name,
+      afterWord,
+      fullName: `${name}${afterWord}`,
     };
-    list.push(data);
-  });
-  console.log(JSON.stringify(list));
-  console.log(defaultNameLength, defaultNum, defaultGender);
-  return [];
+    returnList.push(data);
+  }
+  return returnList;
 };

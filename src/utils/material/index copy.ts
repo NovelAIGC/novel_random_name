@@ -1,4 +1,4 @@
-import DaoList from "@/data/shared/strange.json";
+import DaoList from "@/data/dao/dao.json";
 import { MaterialParamsType, ReturnMaterialType } from "@/type/material";
 
 export const getMaterial = (
@@ -13,7 +13,7 @@ export const getMaterial = (
   const list: any = [];
   DaoList.map((item, index) => {
     const data = {
-      id: index + 146,
+      id: index + 1,
       name: item,
       class: "",
     };
