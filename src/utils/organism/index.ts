@@ -23,6 +23,8 @@ export const getOrganism = (
   const afterWordList = afterWord
     ? getFixedList(defaultNum, afterWord)
     : getRandomList(defaultNum, AfterList);
+  
+  
 
   const nameList = getRandomList(defaultNum, NameList);
   const returnList: ReturnOrganismType[] = [];

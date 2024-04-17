@@ -1,3 +1,5 @@
+import { GenderEnum } from "@/enum";
+
 // 返回性别信息类型
 export interface GenderInfoType {
   femaleNum: number;
@@ -8,4 +10,5 @@ export interface GenderInfoType {
 export interface RandomNameType {
   name: string;
   id: number;
+  gender?: GenderEnum;
 }

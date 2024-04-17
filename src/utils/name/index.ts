@@ -47,15 +47,21 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
   });
   // 获取女性的名字
   const femaleList = getRandomList(femaleNum, FemaleList, defaultNameLength);
+  femaleList.map((item) => {
+    item.gender = GenderEnum.FEMALE;
+  });
   // 获取男性的名字
   const maleList = getRandomList(maleNum, MaleList, defaultNameLength);
+  maleList.map((item) => {
+    item.gender = GenderEnum.MALE;
+  });
   const nameList = [...femaleList, ...maleList];
 
   const returnList: ReturnNameType[] = [];
 
   for (let index = 0; index < defaultNum; index++) {
     const { name: familyName } = familyList[index]; // 获取姓
-    const { name } = nameList[index]; // 获取名字
+    const { name, gender } = nameList[index]; // 获取名字
     const { name: wordSizeName } = wordSizeList[index]; // 获取字号
     const data: ReturnNameType = {
       id: index + 1,
@@ -64,6 +70,7 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
       fullName: `${familyName}${name}`,
       wordSize: "",
       word: "",
+      gender,
     };
     if (defaultWord) {
       data.word = defaultWord;

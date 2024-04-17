@@ -1,7 +1,7 @@
 {
   "name": "fantasy_random_name",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "dist",
@@ -18,12 +18,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "publish": "npm run build && npm version patch"
+    "publish": " npm version patch && npm run build && npm publish"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-dts": "^3.8.3"
+  },
+  "dependencies": {
+    "lunar-typescript": "^1.7.5"
   }
 }

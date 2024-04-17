@@ -5,6 +5,7 @@ import { getOrganism } from "@/utils/organism";
 import { getMaterial } from "@/utils/material";
 import { getWeapon } from "@/utils/weapon";
 import { getAddress } from "@/utils/address";
+import { getAge } from "@/utils/age";
 
 export {
   getName,
@@ -15,4 +16,5 @@ export {
   getMaterial,
   getWeapon,
   getAddress,
+  getAge
 };

@@ -1,4 +1,5 @@
 import { GenderEnum } from "@/enum";
+import { RandomNameType } from "./index";
 
 
 
@@ -11,9 +12,7 @@ export interface NameParamsType {
   isWord?: boolean;
 }
 
-export interface ReturnNameType {
-  name: string;
-  id: number;
+export interface ReturnNameType extends RandomNameType { 
   family: string;
   fullName: string;
   word: string;
