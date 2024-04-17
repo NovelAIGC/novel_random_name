@@ -17,7 +17,7 @@ export enum DaoClassEnum {
   EXOTIC = "exotic",
 }
 
-export enum GongFaClassEnum {
+export enum PublicClassEnum {
   ACTION = "action",
   DAO = "dao",
   ELEMENT = "element",
@@ -34,9 +34,5 @@ export enum OrganizationClassEnum {
   NATION = "nation",
   LOCATION = "location",
   CONTINENT = "continent",
-}
-
-
-export enum OrganizationClassEnum {
   MYTH = "myth", 
 }
