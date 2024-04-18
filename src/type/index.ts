@@ -22,6 +22,7 @@ import {
   ReturnWeaponType,
   WeaponParamsType,
 } from "./weapon";
+import { ReturnAgeType } from "./age";
 
 // 返回性别信息类型
 export interface GenderInfoType {
@@ -48,7 +49,8 @@ export declare type ReturnInfoType =
   | ReturnMaterialClassType
   | ReturnMaterialType
   | ReturnWeaponClassType
-  | ReturnWeaponType;
+  | ReturnWeaponType
+  | ReturnAgeType;
 
 export declare type ParamsInfoType =
   | DaoParamsType

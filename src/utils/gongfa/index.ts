@@ -4,7 +4,7 @@ import { GongfaParamsType, ReturnGongfaType } from "@/type/gongfa";
 import { getFixedList, getRandomList } from "../tool";
 import { RandomNameType } from "@/type";
 
-export const getGongfa = (option: GongfaParamsType): ReturnGongfaType[] => {
+export const getRandomGongfa = (option: GongfaParamsType): ReturnGongfaType[] => {
   const { num, nameLength, afterWord } = option;
   //   初始化数据
   const defaultNum = num ? num : 10;

@@ -8,7 +8,7 @@ import { ReturnWeaponType, WeaponParamsType } from "@/type/weapon";
  * @param option
  * @returns
  */
-export const getWeapon = (option: WeaponParamsType): ReturnWeaponType[] => {
+export const getRandomWeapon = (option: WeaponParamsType): ReturnWeaponType[] => {
   const { num, afterWord, nameLength } = option;
   // 初始化数据
   const defaultNum = num ? num : 10;

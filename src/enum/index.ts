@@ -34,5 +34,9 @@ export enum OrganizationClassEnum {
   NATION = "nation",
   LOCATION = "location",
   CONTINENT = "continent",
-  MYTH = "myth", 
+  MYTH = "myth",
+}
+export enum AgeRangeEnum {
+  MAX = 2100,
+  MIN = 0,
 }

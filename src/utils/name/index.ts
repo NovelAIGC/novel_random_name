@@ -2,10 +2,11 @@ import FamilyList from "@/data/name/family.json";
 import FemaleList from "@/data/name/female.json";
 import MaleList from "@/data/name/male.json";
 import MiddleList from "@/data/name/middle.json";
-import { GenderEnum } from "@/enum";
+import { AgeRangeEnum, GenderEnum } from "@/enum";
 import { NameParamsType, ReturnNameType } from "@/type/name";
 import { getFixedList, getGenderInfo, getRandomList } from "../tool";
 import { RandomNameType } from "@/type";
+import { getRandomAge } from "@/utils/age";
 
 /**
  * 获取随机名字
@@ -17,8 +18,8 @@ import { RandomNameType } from "@/type";
  * @param isWord 是否有字
  * @returns RandomNameType[]
  */
-export const getName = (option: NameParamsType): ReturnNameType[] => {
-  const { num, family, gender, word, nameLength, isWord } = option;
+export const getRandomName = (option: NameParamsType): ReturnNameType[] => {
+  const { num, family, gender, word, nameLength, isWord, ageInfo } = option;
   //   初始化数据
   const defaultNum = num ? num : 10;
   const defaultFamily = family ? family : "";
@@ -26,6 +27,17 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
   const defaultWord = word ? word : "";
   const defaultIsWord = !!isWord;
   const defaultNameLength = nameLength ? nameLength : 0;
+
+  // 定义年龄数组
+  const ageList = [];
+  console.log(ageInfo)
+  if (ageInfo && ageInfo.disable) {
+    for (let i = 0; i < defaultNum; i++) {
+      const minAge = ageInfo?.min ? ageInfo?.min : AgeRangeEnum.MIN;
+      const maxAge = ageInfo?.max ? ageInfo?.max : AgeRangeEnum.MAX;
+      ageList.push(getRandomAge(minAge, maxAge));
+    }
+  } 
   // 定义姓数组
   const familyList: RandomNameType[] =
     defaultFamily === ""
@@ -57,12 +69,14 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
   });
   const nameList = [...femaleList, ...maleList];
 
-  const returnList: ReturnNameType[] = [];
+  const returnList: ReturnNameType[] = []; 
 
   for (let index = 0; index < defaultNum; index++) {
     const { name: familyName } = familyList[index]; // 获取姓
     const { name, gender } = nameList[index]; // 获取名字
     const { name: wordSizeName } = wordSizeList[index]; // 获取字号
+    const ageInfo = ageList[index];
+
     const data: ReturnNameType = {
       id: index + 1,
       name,
@@ -71,6 +85,7 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
       wordSize: "",
       word: "",
       gender,
+      ageInfo: null,
     };
     if (defaultWord) {
       data.word = defaultWord;
@@ -78,6 +93,10 @@ export const getName = (option: NameParamsType): ReturnNameType[] => {
     }
     if (defaultIsWord) {
       data.wordSize = wordSizeName;
+    }
+    console.log(ageInfo)
+    if (ageInfo) {
+      data.ageInfo = ageInfo;
     }
     returnList.push(data);
   }

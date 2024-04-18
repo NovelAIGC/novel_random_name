@@ -16,7 +16,7 @@ import { DaoParamsType, ReturnDaoClassType, ReturnDaoType } from "@/type/dao";
  * @param option: DaoParamsType
  * @returns
  */
-export const getDao = (option: DaoParamsType): ReturnDaoType[] => {
+export const getRandomDao = (option: DaoParamsType): ReturnDaoType[] => {
   const { num, gender, nameLength, beforeWord, afterWord, daoNamePosition } =
     option;
   //   初始化数据
@@ -82,7 +82,7 @@ export const getDao = (option: DaoParamsType): ReturnDaoType[] => {
  * @param option
  * @returns
  */
-export function getDaoClass(
+export function getRandomDaoClass(
   gender: GenderEnum = GenderEnum.ALL,
   filter?: DaoClassEnum
 ): ReturnDaoClassType[] {

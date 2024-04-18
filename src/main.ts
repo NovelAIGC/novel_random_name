@@ -5,14 +5,14 @@ import {
   PublicClassEnum,
   OrganizationClassEnum,
 } from "@/enum";
-import { getDao, getDaoClass } from "./utils/dao/index";
-import { getName } from "@/utils/name";
-import { getGongfa } from "@/utils/gongfa";
-import { getOrganism } from "@/utils/organism";
-import { getMaterial } from "@/utils/material";
-import { getWeapon } from "@/utils/weapon";
-import { getAddress } from "@/utils/address";
-import { getAge } from "@/utils/age";
+import { getRandomDao, getRandomDaoClass } from "./utils/dao/index";
+import { getRandomName } from "@/utils/name";
+import { getRandomGongfa } from "@/utils/gongfa";
+import { getRandomOrganism } from "@/utils/organism";
+import { getRandomMaterial } from "@/utils/material";
+import { getRandomWeapon } from "@/utils/weapon";
+import { getRandomAddress } from "@/utils/address";
+import { getRandomAge } from "@/utils/age";
 import type {
   GenderInfoType,
   ReturnInfoType,
@@ -22,15 +22,15 @@ import type {
 
 export {
   // 导出方法
-  getName,
-  getDao,
-  getGongfa,
-  getDaoClass,
-  getOrganism,
-  getMaterial,
-  getWeapon,
-  getAddress,
-  getAge,
+  getRandomName,
+  getRandomDao,
+  getRandomDaoClass,
+  getRandomGongfa,
+  getRandomOrganism,
+  getRandomMaterial,
+  getRandomWeapon,
+  getRandomAddress,
+  getRandomAge,
 
   // 导出枚举
   GenderEnum,
@@ -43,5 +43,5 @@ export {
   ReturnInfoType,
   RandomNameType,
   GenderInfoType,
-  ParamsInfoType
+  ParamsInfoType,
 };

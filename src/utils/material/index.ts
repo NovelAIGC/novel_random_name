@@ -9,7 +9,7 @@ import { getFixedList, getRandomDynamicList, getRandomList } from "../tool";
  * @param option
  * @returns
  */
-export const getMaterial = (
+export const getRandomMaterial = (
   option: MaterialParamsType
 ): ReturnMaterialType[] => {
   const { num, afterWord, wordLength, isOrganism } = option;

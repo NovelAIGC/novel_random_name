@@ -9,7 +9,7 @@ import { getFixedList, getRandomList } from "../tool";
  * @param option
  * @returns
  */
-export const getOrganism = (
+export const getRandomOrganism = (
   option: OrganismParamsType
 ): ReturnOrganismType[] => {
   const { num, color, afterWord } = option;

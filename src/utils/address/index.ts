@@ -9,7 +9,7 @@ import { OrganizationClassEnum } from "@/enum";
  * @param option
  * @returns
  */
-export const getAddress = (option: AddressParamsType): ReturnAddressType[] => {
+export const getRandomAddress = (option: AddressParamsType): ReturnAddressType[] => {
   const { num, afterWord, nameLength, type, isMyth } = option;
   // 初始化数据
   const defaultNum = num ? num : 10;
