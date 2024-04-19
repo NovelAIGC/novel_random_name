@@ -3,7 +3,7 @@ import { RandomNameType } from "./index";
 export interface MaterialParamsType {
   num: number;
   afterWord?: string;
-  wordLength?: number;
+  nameLength?: number;
   isOrganism?: boolean;
 }
 

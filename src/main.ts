@@ -1,3 +1,4 @@
+import { getRandomAlchemy } from './utils/alchemy/index';
 import {
   DaoNamePositionEnum,
   DaoClassEnum,
@@ -31,6 +32,7 @@ export {
   getRandomWeapon,
   getRandomAddress,
   getRandomAge,
+  getRandomAlchemy,
 
   // 导出枚举
   GenderEnum,

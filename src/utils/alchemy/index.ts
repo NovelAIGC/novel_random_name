@@ -1,17 +1,17 @@
-import MaterialAfterList from "@/data/material/after.json";
 import NameList from "@/data/organism/name.json";
 import OrganismAfterList from "@/data/organism/after.json";
-import { MaterialParamsType, ReturnMaterialType } from "@/type/material";
 import { getFixedList, getRandomDynamicList, getRandomList } from "../tool";
+import { AlchemyParamsType, ReturnAlchemyType } from "@/type/alchemy";
+import AlchemyList from "@/data/alchemy/after.json";
 
 /**
- * 获取材料
+ * 获取丹药
  * @param option
  * @returns
  */
-export const getRandomMaterial = (
-  option: MaterialParamsType
-): ReturnMaterialType[] => {
+export const getRandomAlchemy = (
+  option: AlchemyParamsType
+): ReturnAlchemyType[] => {
   const { num, afterWord, nameLength, isOrganism } = option;
   // 初始化数据
   const defaultNum = num ? num : 10;
@@ -24,9 +24,9 @@ export const getRandomMaterial = (
 
   const afterWordList = afterWord
     ? getFixedList(defaultNum, afterWord)
-    : getRandomList(defaultNum, MaterialAfterList);
+    : getRandomList(defaultNum, AlchemyList);
 
-  const returnList: ReturnMaterialType[] = [];
+  const returnList: ReturnAlchemyType[] = [];
 
   const nameList = getRandomDynamicList(
     defaultNum,

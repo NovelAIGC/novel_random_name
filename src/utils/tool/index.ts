@@ -89,7 +89,7 @@ export function getRandomDynamicList(
   let defaultProbability = [
     { key: 1, probability: 0.33 },
     { key: 2, probability: 0.66 },
-    { key: 3, probability: 0.99 },
+    { key: 3, probability: 1 },
   ];
   if (probability > 0) {
     defaultProbability = [];
@@ -97,7 +97,7 @@ export function getRandomDynamicList(
       defaultProbability.push({
         key: index + 1,
         probability: +((index + 1) / probability).toFixed(2),
-      }); 
+      });
     }
   }
 
@@ -106,13 +106,8 @@ export function getRandomDynamicList(
     let loopNum = !wordLength ? 0 : wordLength;
     // 当不固定字数时  随机返回1~2字数`
     if (loopNum === 0) {
-      const randomValue = Math.random();
-      // 通过概率赋值name长度
-      defaultProbability.forEach((item) => {
-        if (randomValue <= item.probability) {
-          loopNum = item.key;
-        }
-      });
+      const index = Math.floor(Math.random() * defaultProbability.length);
+      loopNum = defaultProbability[index].key;
     }
     // 随机 loopNum 个名字并连
     const oList = JSON.parse(JSON.stringify(list));
