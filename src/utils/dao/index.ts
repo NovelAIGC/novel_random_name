@@ -33,9 +33,9 @@ export const getRandomDao = (option: DaoParamsType): ReturnDaoType[] => {
   // 获取名
   const daoNameList = getRandomList(defaultNum, DaoList, defaultNameLength);
   // 组装后缀
-  let beforeList = [];
-  if (defaultBeforeWord) {
-    beforeList = getFixedList(defaultNum, defaultBeforeWord);
+  let afterList = [];
+  if (defaultAfterWord) {
+    afterList = getFixedList(defaultNum, defaultAfterWord);
   } else {
     const beforeFemaleList = getRandomList(femaleNum, FemaleList);
     beforeFemaleList.map((item) => {
@@ -45,38 +45,38 @@ export const getRandomDao = (option: DaoParamsType): ReturnDaoType[] => {
     beforeMaleList.map((item) => {
       item.gender = GenderEnum.MALE;
     });
-    beforeList = [...beforeFemaleList, ...beforeMaleList];
+    afterList = [...beforeFemaleList, ...beforeMaleList];
   }
 
   // 组装前缀
-  let afterList: RandomNameType[] = [];
-  if (defaultAfterWord) {
-    afterList = getFixedList(defaultNum, defaultAfterWord);
+  let beforeList: RandomNameType[] = [];
+  if (defaultBeforeWord) {
+    beforeList = getFixedList(defaultNum, defaultBeforeWord);
   }
 
   const returnList: ReturnDaoType[] = [];
 
   for (let index = 0; index < defaultNum; index++) {
     const { name: DaoName } = daoNameList[index]; // 获取姓法号
-    const { name: BeforeName, gender } = beforeList[index]; // 获取后缀 
+    const { name: AfterName, gender } = afterList[index]; // 获取后缀 
     const data: ReturnDaoType = {
       id: index + 1,
       name: DaoName,
-      fullName: `${DaoName}${BeforeName}`,
-      beforeWord: BeforeName,
-      afterWord: "",
+      fullName: `${DaoName}${AfterName}`,
+      beforeWord: "",
+      afterWord: AfterName,
       gender
     };
 
-    if (afterList.length > 0) {
-      const { name } = afterList[index]; // 获取前缀
+    if (beforeList.length > 0) {
+      const { name } = beforeList[index]; // 获取前缀
       if (defaultDaoNamePosition === DaoNamePositionEnum.AFTER) {
-        data.fullName = `${DaoName}${name}${BeforeName}`;
+        data.fullName = `${DaoName}${name}${AfterName}`;
       }
       if (defaultDaoNamePosition === DaoNamePositionEnum.BEFORE) {
-        data.fullName = `${name}${DaoName}${BeforeName}`;
+        data.fullName = `${name}${DaoName}${AfterName}`;
       }
-      data.afterWord = name;
+      data.beforeWord = name;
     }
 
     returnList.push(data);
