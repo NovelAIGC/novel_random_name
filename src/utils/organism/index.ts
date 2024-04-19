@@ -12,21 +12,20 @@ import { getFixedList, getRandomList } from "../tool";
 export const getRandomOrganism = (
   option: OrganismParamsType
 ): ReturnOrganismType[] => {
-  const { num, color, afterWord } = option;
+  const { num, beforeWord, nameLength, afterWord } = option;
   //   初始化数据
   const defaultNum = num ? num : 10; // 默认数量
+  const defaultNameLength = nameLength ? nameLength : 0;
 
-  const colorList = color
-    ? getFixedList(defaultNum, color)
+  const colorList = beforeWord
+    ? getFixedList(defaultNum, beforeWord)
     : getRandomList(defaultNum, ColorList);
 
   const afterWordList = afterWord
     ? getFixedList(defaultNum, afterWord)
     : getRandomList(defaultNum, AfterList);
-  
-  
 
-  const nameList = getRandomList(defaultNum, NameList);
+  const nameList = getRandomList(defaultNum, NameList, defaultNameLength);
   const returnList: ReturnOrganismType[] = [];
   for (let i = 0; i < defaultNum; i++) {
     const { name: colorName } = colorList[i];

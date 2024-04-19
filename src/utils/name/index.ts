@@ -29,8 +29,7 @@ export const getRandomName = (option: NameParamsType): ReturnNameType[] => {
   const defaultNameLength = nameLength ? nameLength : 0;
 
   // 定义年龄数组
-  const ageList = [];
-  console.log(ageInfo)
+  const ageList = []; 
   if (ageInfo && ageInfo.disable) {
     for (let i = 0; i < defaultNum; i++) {
       const minAge = ageInfo?.min ? ageInfo?.min : AgeRangeEnum.MIN;
@@ -93,8 +92,7 @@ export const getRandomName = (option: NameParamsType): ReturnNameType[] => {
     }
     if (defaultIsWord) {
       data.wordSize = wordSizeName;
-    }
-    console.log(ageInfo)
+    } 
     if (ageInfo) {
       data.ageInfo = ageInfo;
     }

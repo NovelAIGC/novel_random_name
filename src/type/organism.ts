@@ -3,7 +3,8 @@ import { RandomNameType } from "./index";
 export interface OrganismParamsType {
   num: number;
   afterWord?: string;
-  color?: string;
+  beforeWord?: string;
+  nameLength?: number;
 }
 
 export interface ReturnOrganismType extends RandomNameType {

@@ -5,8 +5,7 @@ import { ReturnAgeType } from "@/type/age";
 export function getRandomAge(
   minYear: number = AgeRangeEnum.MIN,
   maxYear: number = AgeRangeEnum.MAX
-): ReturnAgeType {
-  console.log(minYear, maxYear, "minYearminYear");
+): ReturnAgeType { 
   const randomYear = +Math.floor(
     Math.random() * (maxYear - minYear + 1) + minYear
   );
