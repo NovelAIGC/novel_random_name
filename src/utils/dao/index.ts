@@ -38,7 +38,13 @@ export const getRandomDao = (option: DaoParamsType): ReturnDaoType[] => {
     beforeList = getFixedList(defaultNum, defaultBeforeWord);
   } else {
     const beforeFemaleList = getRandomList(femaleNum, FemaleList);
+    beforeFemaleList.map((item) => {
+      item.gender = GenderEnum.FEMALE;
+    });
     const beforeMaleList = getRandomList(maleNum, MaleList);
+    beforeMaleList.map((item) => {
+      item.gender = GenderEnum.MALE;
+    });
     beforeList = [...beforeFemaleList, ...beforeMaleList];
   }
 
@@ -52,13 +58,14 @@ export const getRandomDao = (option: DaoParamsType): ReturnDaoType[] => {
 
   for (let index = 0; index < defaultNum; index++) {
     const { name: DaoName } = daoNameList[index]; // 获取姓法号
-    const { name: BeforeName } = beforeList[index]; // 获取后缀
+    const { name: BeforeName, gender } = beforeList[index]; // 获取后缀 
     const data: ReturnDaoType = {
       id: index + 1,
       name: DaoName,
       fullName: `${DaoName}${BeforeName}`,
       beforeWord: BeforeName,
       afterWord: "",
+      gender
     };
 
     if (afterList.length > 0) {

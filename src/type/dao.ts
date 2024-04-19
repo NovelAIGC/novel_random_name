@@ -7,7 +7,7 @@ export interface DaoParamsType {
   nameLength?: number;
   beforeWord?: string;
   afterWord?: string;
-  daoNamePosition: DaoNamePositionEnum;
+  daoNamePosition?: DaoNamePositionEnum;
 }
 
 export interface ReturnDaoType extends RandomNameType {
