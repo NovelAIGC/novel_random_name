@@ -5,7 +5,7 @@ export interface AddressParamsType {
   num: number;
   afterWord?: string;
   nameLength?: number;
-  type?: OrganizationClassEnum | null;
+  addressType?: OrganizationClassEnum | null;
   isMyth?: boolean;
 }
 

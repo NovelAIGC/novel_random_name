@@ -10,11 +10,11 @@ import { OrganizationClassEnum } from "@/enum";
  * @returns
  */
 export const getRandomAddress = (option: AddressParamsType): ReturnAddressType[] => {
-  const { num, afterWord, nameLength, type, isMyth } = option;
+  const { num, afterWord, nameLength, addressType, isMyth } = option;
   // 初始化数据
   const defaultNum = num ? num : 10;
   const defaultNameLength = nameLength ? nameLength : 0;
-  const defaultType = type ? type : null;
+  const defaultType = addressType ? addressType : null;
   const defaultIsMyth = !!isMyth;
 
   let newOrganizationAfterList = OrganizationAfterList;

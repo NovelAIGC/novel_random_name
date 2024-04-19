@@ -30,10 +30,10 @@ export enum PublicClassEnum {
 }
 
 export enum OrganizationClassEnum {
-  CLAN = "clan",
-  NATION = "nation",
-  LOCATION = "location",
-  CONTINENT = "continent",
+  SECT = 'sect', // 门派
+	COUNTRY = 'country', // 国家
+	STRONGHOLD = 'stronghold', // 据点
+	REGION = 'region', // 地域
   MYTH = "myth",
 }
 export enum AgeRangeEnum {
